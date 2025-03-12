@@ -5,12 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import com.example.kinopoiskpopularmovies.R
 import com.example.kinopoiskpopularmovies.databinding.FragmentMovieListBinding
+import com.example.kinopoiskpopularmovies.models.Movie
+import com.example.kinopoiskpopularmovies.ui.movie_details.MovieDetailsFragment
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
@@ -19,7 +23,7 @@ class MoviesListFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val viewModel: MovieListViewModel by viewModels()
-    private var moviesListAdapter = MoviesListAdapter()
+    private lateinit var moviesListAdapter: MoviesListAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,7 +40,16 @@ class MoviesListFragment : Fragment() {
         with(binding.swipeRefresh) {
             setProgressViewOffset(true, 0, 100)
             setColorSchemeColors(ContextCompat.getColor(this.context, R.color.kinopoisk_orange))
-            setProgressBackgroundColorSchemeColor(ContextCompat.getColor(this.context, R.color.kinopoisk_dark))
+            setProgressBackgroundColorSchemeColor(
+                ContextCompat.getColor(
+                    this.context,
+                    R.color.kinopoisk_dark
+                )
+            )
+        }
+
+        moviesListAdapter = MoviesListAdapter { movie ->
+            onMovieClick(movie)
         }
 
         binding.recyclerViewMovies.adapter = moviesListAdapter
@@ -56,5 +69,13 @@ class MoviesListFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun onMovieClick(movie: Movie) {
+        val bundle = bundleOf(MovieDetailsFragment.MOVIE_KEY to movie)
+
+        findNavController().navigate(
+            R.id.action_moviesListFragment_to_movieDetailsFragment,
+            bundle)
     }
 }

@@ -4,12 +4,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import com.bumptech.glide.Glide
 import com.example.kinopoiskpopularmovies.databinding.MovieItemBinding
 import com.example.kinopoiskpopularmovies.models.Movie
 
-class MoviesListAdapter : PagingDataAdapter<Movie, MovieViewHolder>(DiffUtilCallback()) {
+class MoviesListAdapter(
+    private val onMovieClickListener: OnMovieClickListener,
+) : PagingDataAdapter<Movie, MovieViewHolder>(DiffUtilCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
         return MovieViewHolder(
@@ -24,6 +25,8 @@ class MoviesListAdapter : PagingDataAdapter<Movie, MovieViewHolder>(DiffUtilCall
                 Glide.with(imageViewPoster.context)
                     .load(item.posterUrl)
                     .into(imageViewPoster)
+
+                root.setOnClickListener { onMovieClickListener.onMovieClick(item) }
             }
         }
     }
@@ -36,3 +39,5 @@ class DiffUtilCallback : DiffUtil.ItemCallback<Movie>() {
 
     override fun areContentsTheSame(oldItem: Movie, newItem: Movie) = oldItem == newItem
 }
+
+fun interface OnMovieClickListener { fun onMovieClick(movie: Movie) }
