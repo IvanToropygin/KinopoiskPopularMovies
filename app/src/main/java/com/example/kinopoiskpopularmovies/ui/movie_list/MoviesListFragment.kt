@@ -1,7 +1,6 @@
 package com.example.kinopoiskpopularmovies.ui.movie_list
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -40,10 +39,8 @@ class MoviesListFragment : Fragment() {
         }.launchIn(viewLifecycleOwner.lifecycleScope)
 
         moviesListAdapter.addLoadStateListener { loadState ->
-            Log.d("Paging", "Load state: $loadState")
-            val isLoading = loadState.refresh is LoadState.Loading
-            Log.d("Paging", "Is loading: $isLoading")
-            binding.progressBarLoading.isVisible = isLoading
+            val isAppendLoading = loadState.append is LoadState.Loading
+            binding.progressBarLoading.isVisible = isAppendLoading
         }
     }
 

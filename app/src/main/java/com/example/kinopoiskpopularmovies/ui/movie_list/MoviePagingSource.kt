@@ -17,7 +17,7 @@ class MoviePagingSource: PagingSource<Int, Movie>() {
             val page = params.key ?: FIRST_PAGE
             val movies = repository.getMovies(page)
 
-            delay(3000)
+            delay(1000)
 
             LoadResult.Page(
                 data = movies,
