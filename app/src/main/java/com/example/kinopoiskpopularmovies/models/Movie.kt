@@ -8,6 +8,8 @@ import kotlinx.parcelize.Parcelize
 data class Movie(
     @SerializedName("kinopoiskId") val kinopoiskId: Long,
     @SerializedName("nameRu") val name: String,
+    @SerializedName("description") val description: String,
+    @SerializedName("countries") val countries: List<CountryDto>,
     @SerializedName("ratingKinopoisk") val rating: Double = 0.0,
     @SerializedName("year") val year: Int,
     @SerializedName("posterUrl") val posterUrl: String,
