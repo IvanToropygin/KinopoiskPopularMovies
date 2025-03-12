@@ -13,6 +13,10 @@ interface MovieApi {
         @Query("page") page: Int,
     ): MovieResponse
 
+    @GET("films/collections?type=TOP_POPULAR_MOVIES")
+    suspend fun getPopularMovies(
+    ): MovieResponse
+
     @GET("films/{kinopoiskId}/videos")
     suspend fun loadTrailers(
         @Path("kinopoiskId") kinopoiskId: Long,
