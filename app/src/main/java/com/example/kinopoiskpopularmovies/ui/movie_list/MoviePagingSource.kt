@@ -10,7 +10,7 @@ class MoviePagingSource: PagingSource<Int, Movie>() {
 
     private val repository = MovieRepository()
 
-    override fun getRefreshKey(state: PagingState<Int, Movie>): Int? = FIRST_PAGE
+    override fun getRefreshKey(state: PagingState<Int, Movie>): Int = FIRST_PAGE
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Movie> {
         return try {
