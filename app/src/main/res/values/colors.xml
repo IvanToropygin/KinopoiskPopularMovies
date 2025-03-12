@@ -2,4 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="kinopoisk_orange">#FF9E00</color>
+    <color name="kinopoisk_dark">#403928</color>
+    <color name="kinopoisk_background">#2B2725</color>
 </resources>

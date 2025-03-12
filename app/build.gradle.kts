@@ -76,6 +76,7 @@ dependencies {
     ksp("com.google.dagger:hilt-compiler:2.55")
     implementation("androidx.paging:paging-runtime:3.3.6")
     implementation("androidx.paging:paging-common-ktx:3.2.1")
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
