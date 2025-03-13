@@ -7,19 +7,20 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.kinopoiskpopularmovies.databinding.MovieItemBinding
-import com.example.kinopoiskpopularmovies.models.Movie
+import com.example.kinopoiskpopularmovies.domain.MovieItem
 
 class FavouriteMoviesAdapter(
     private val onFavouriteMovieClickListener: OnFavouriteMovieClickListener,
-): ListAdapter<Movie, FavouriteMovieViewHolder>(DiffUtilCallback()) {
+) : ListAdapter<MovieItem, FavouriteMovieViewHolder>(DiffUtilCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavouriteMovieViewHolder {
         return FavouriteMovieViewHolder(
             MovieItemBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
-                false)
+                false
             )
+        )
     }
 
     override fun onBindViewHolder(holder: FavouriteMovieViewHolder, position: Int) {
@@ -36,14 +37,17 @@ class FavouriteMoviesAdapter(
     }
 }
 
-class FavouriteMovieViewHolder(val binding: MovieItemBinding) : RecyclerView.ViewHolder(binding.root)
+class FavouriteMovieViewHolder(val binding: MovieItemBinding) :
+    RecyclerView.ViewHolder(binding.root)
 
-class DiffUtilCallback : DiffUtil.ItemCallback<Movie>() {
+class DiffUtilCallback : DiffUtil.ItemCallback<MovieItem>() {
 
-    override fun areItemsTheSame(oldItem: Movie, newItem: Movie) =
+    override fun areItemsTheSame(oldItem: MovieItem, newItem: MovieItem) =
         oldItem.kinopoiskId == newItem.kinopoiskId
 
-    override fun areContentsTheSame(oldItem: Movie, newItem: Movie) = oldItem == newItem
+    override fun areContentsTheSame(oldItem: MovieItem, newItem: MovieItem) = oldItem == newItem
 }
 
-fun interface OnFavouriteMovieClickListener { fun onMovieClick(movie: Movie) }
+fun interface OnFavouriteMovieClickListener {
+    fun onMovieClick(movie: MovieItem)
+}

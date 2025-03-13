@@ -2,20 +2,20 @@ package com.example.kinopoiskpopularmovies.ui.home
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.example.kinopoiskpopularmovies.models.Movie
-import com.example.kinopoiskpopularmovies.repository.MovieRepository
+import com.example.kinopoiskpopularmovies.domain.MovieItem
+import com.example.kinopoiskpopularmovies.domain.MoviesRepository
 import kotlinx.coroutines.delay
 
-class MoviePagingSource: PagingSource<Int, Movie>() {
+class MoviePagingSource(
+    private val repository: MoviesRepository,
+) : PagingSource<Int, MovieItem>() {
 
-    private val repository = MovieRepository()
+    override fun getRefreshKey(state: PagingState<Int, MovieItem>): Int = FIRST_PAGE
 
-    override fun getRefreshKey(state: PagingState<Int, Movie>): Int = FIRST_PAGE
-
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Movie> {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, MovieItem> {
         return try {
             val page = params.key ?: FIRST_PAGE
-            val movies = repository.getMovies(page)
+            val movies = repository.getPopularMovies(page)
 
             delay(1000)
 

@@ -7,7 +7,7 @@ import androidx.paging.LoadStateAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kinopoiskpopularmovies.databinding.LoadStateBinding
 
-class LoadStateAdapter : LoadStateAdapter<LoadStateViewHolder>() {
+class MyLoadStateAdapter(function: () -> Unit) : LoadStateAdapter<LoadStateViewHolder>() {
 
     override fun onBindViewHolder(holder: LoadStateViewHolder, loadState: LoadState) = Unit
 

@@ -13,16 +13,15 @@ import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import com.example.kinopoiskpopularmovies.R
 import com.example.kinopoiskpopularmovies.databinding.FragmentMovieListBinding
-import com.example.kinopoiskpopularmovies.models.Movie
 import com.example.kinopoiskpopularmovies.ui.movie_details.MovieDetailsFragment
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 class MoviesListFragment : Fragment() {
     private var _binding: FragmentMovieListBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: MovieListViewModel by viewModels()
+    private val viewModel: PopularMoviesViewModel by viewModels()
     private lateinit var moviesListAdapter: MoviesListAdapter
 
     override fun onCreateView(
@@ -36,46 +35,48 @@ class MoviesListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupRefreshLayout()
+        setupAdapter()
+        observePagingData()
+    }
 
+    private fun setupRefreshLayout() {
         with(binding.swipeRefresh) {
             setProgressViewOffset(true, 0, 100)
-            setColorSchemeColors(ContextCompat.getColor(this.context, R.color.kinopoisk_orange))
+            setColorSchemeColors(ContextCompat.getColor(requireContext(), R.color.kinopoisk_orange))
             setProgressBackgroundColorSchemeColor(
-                ContextCompat.getColor(
-                    this.context,
-                    R.color.kinopoisk_dark
-                )
+                ContextCompat.getColor(requireContext(), R.color.kinopoisk_dark)
+            )
+            setOnRefreshListener { moviesListAdapter.refresh() }
+        }
+    }
+
+    private fun setupAdapter() {
+        moviesListAdapter = MoviesListAdapter { movie ->
+            findNavController().navigate(
+                R.id.action_navigation_home_to_movieDetailsFragment,
+                bundleOf(MovieDetailsFragment.ARG_MOVIE to movie.kinopoiskId)
             )
         }
 
-        moviesListAdapter = MoviesListAdapter { movie ->
-            onMovieClick(movie)
+        binding.recyclerViewMovies.adapter = moviesListAdapter.withLoadStateFooter(
+            footer = MyLoadStateAdapter { moviesListAdapter.retry() }
+        )
+
+        moviesListAdapter.addLoadStateListener { loadState ->
+            binding.swipeRefresh.isRefreshing = loadState.source.refresh is LoadState.Loading
         }
+    }
 
-        binding.recyclerViewMovies.adapter = moviesListAdapter
-            .withLoadStateFooter(LoadStateAdapter())
-
-        binding.swipeRefresh.setOnRefreshListener { moviesListAdapter.refresh() }
-
-        moviesListAdapter.loadStateFlow.onEach {
-            binding.swipeRefresh.isRefreshing = it.refresh == LoadState.Loading
-        }.launchIn(viewLifecycleOwner.lifecycleScope)
-
-        viewModel.pagedMovies.onEach {
-            moviesListAdapter.submitData(it)
-        }.launchIn(viewLifecycleOwner.lifecycleScope)
+    private fun observePagingData() {
+        lifecycleScope.launch {viewModel.pagedMovies.collectLatest {
+                moviesListAdapter.submitData(it)
+            }
+        }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    private fun onMovieClick(movie: Movie) {
-        val bundle = bundleOf(MovieDetailsFragment.MOVIE_KEY to movie)
-
-        findNavController().navigate(
-            R.id.action_navigation_home_to_movieDetailsFragment,
-            bundle)
     }
 }

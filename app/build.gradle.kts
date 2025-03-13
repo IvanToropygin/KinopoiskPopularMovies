@@ -79,6 +79,7 @@ dependencies {
     implementation("androidx.paging:paging-runtime:3.3.6")
     implementation("androidx.paging:paging-common-ktx:3.2.1")
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.7")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

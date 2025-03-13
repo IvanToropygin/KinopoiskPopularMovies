@@ -1,4 +1,4 @@
-package com.example.kinopoiskpopularmovies.network
+package com.example.kinopoiskpopularmovies.data.network
 
 import com.example.kinopoiskpopularmovies.BuildConfig
 import okhttp3.Interceptor
