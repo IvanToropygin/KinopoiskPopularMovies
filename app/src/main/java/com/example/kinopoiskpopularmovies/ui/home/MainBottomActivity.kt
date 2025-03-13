@@ -3,8 +3,6 @@ package com.example.kinopoiskpopularmovies.ui.home
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.kinopoiskpopularmovies.R
 import com.example.kinopoiskpopularmovies.databinding.ActivityMainBottomBinding
@@ -24,10 +22,5 @@ class MainBottomActivity : AppCompatActivity() {
 
         val navView: BottomNavigationView = binding.navView
         navView.setupWithNavController(navController)
-
-//        val appBarConfiguration = AppBarConfiguration(
-//            setOf(R.id.navigation_home, R.id.navigation_favourites)
-//        )
-//        setupActionBarWithNavController(navController, appBarConfiguration)
     }
 }
