@@ -75,7 +75,7 @@ class MoviesListFragment : Fragment() {
         val bundle = bundleOf(MovieDetailsFragment.MOVIE_KEY to movie)
 
         findNavController().navigate(
-            R.id.action_moviesListFragment_to_movieDetailsFragment,
+            R.id.action_navigation_home_to_movieDetailsFragment,
             bundle)
     }
 }

@@ -45,7 +45,6 @@ class FavouriteMoviesFragment : Fragment() {
             kinopoiskId = 5405057,
             name = "Анора",
             description = "Бруклин. Стриптизерша Анора, предпочитающая имя...",
-            countries = emptyList(),
             rating = 1.1,
             year = 2024,
             posterUrl = "https://kinopoiskapiunofficial.tech/images/posters/kp/5405057.jpg"
@@ -61,7 +60,7 @@ class FavouriteMoviesFragment : Fragment() {
         val bundle = bundleOf(MovieDetailsFragment.MOVIE_KEY to movie)
 
         findNavController().navigate(
-            R.id.action_moviesListFragment_to_movieDetailsFragment,
+            R.id.action_navigation_favourites_to_movieDetailsFragment,
             bundle)
     }
 }

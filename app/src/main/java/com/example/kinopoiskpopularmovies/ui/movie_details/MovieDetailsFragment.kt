@@ -38,8 +38,6 @@ class MovieDetailsFragment : Fragment() {
             if (movie.year != 0) textViewYear.text =
                 movie.year.toString() else textViewYear.visibility = View.GONE
 
-            textViewCountry.text = movie.countries.joinToString(", ") { it.country }
-
             textViewDescription.text = movie.description
         }
     }

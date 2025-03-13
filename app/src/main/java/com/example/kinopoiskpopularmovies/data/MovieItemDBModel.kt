@@ -1,33 +1,15 @@
-//package com.example.kinopoiskpopularmovies.data
-//
-//import android.os.Parcelable
-//import androidx.room.ColumnInfo
-//import androidx.room.Entity
-//import androidx.room.PrimaryKey
-//import com.google.gson.annotations.SerializedName
-//import kotlinx.parcelize.Parcelize
-//
-//@Entity(tableName = "favourite_movies")
-//@Parcelize
-//data class MovieItemDBModel(
-//    @PrimaryKey
-//    val kinopoiskId: Long,
-//
-//
-//    val name: String,
-//
-//
-//    val description: String,
-//
-//
-//    val countries: List<CountryDto>,
-//
-//
-//    val rating: Double = 0.0,
-//
-//
-//    val year: Int,
-//
-//
-//    val posterUrl: String,
-//) : Parcelable
+package com.example.kinopoiskpopularmovies.data
+
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "favourite_movies")
+data class MovieItemDBModel(
+    @PrimaryKey
+    val id: Int,
+    val name: String,
+    val description: String,
+    val rating: Double = 0.0,
+    val year: Int,
+    val posterUrl: String,
+)
