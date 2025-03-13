@@ -1,45 +1,50 @@
 package com.example.kinopoiskpopularmovies.ui.movie_details
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.kinopoiskpopularmovies.data.MoviesRepositoryImpl
 import com.example.kinopoiskpopularmovies.domain.MovieItem
-import com.example.kinopoiskpopularmovies.domain.MoviesRepository
 import kotlinx.coroutines.launch
 
-class MovieDetailsViewModel(
-    private val repository: MoviesRepository
-) : ViewModel() {
+class MovieDetailsViewModel(application: Application) : AndroidViewModel(application) {
+
+    private val repository = MoviesRepositoryImpl(application)
 
     private val _movie = MutableLiveData<MovieItem>()
     val movie: LiveData<MovieItem> = _movie
 
-    private val _isFavorite = MutableLiveData<Boolean>()
+    private val _isFavorite = MutableLiveData<Boolean>(false)
     val isFavorite: LiveData<Boolean> = _isFavorite
 
     fun loadMovieFavouriteState(movieId: Int) {
         viewModelScope.launch {
             try {
-                repository.getFavouriteMovieById(movieId)?.let {
-                    _isFavorite.value = true
-                } ?: run {
-                    _isFavorite.value = false
-                }
+                _isFavorite.value = repository.getFavouriteMovieById(movieId) != null
             } catch (e: Exception) {
                 // Handle error
             }
         }
     }
 
-    fun toggleFavorite(movie: MovieItem) {
+    fun toggleFavorite(movieId: Int) {
         viewModelScope.launch {
-            if (movie.isFavorite) {
-                repository.removeMovieFromFavourites(movie.kinopoiskId)
-            } else {
-                repository.addMovieToFavourites(movie)
+            _isFavorite.value?.let { currentState ->
+                try {
+                    if (currentState) {
+                        repository.removeMovieFromFavourites(movieId)
+                    } else {
+                        // Получаем актуальные данные фильма при добавлении
+                        repository.getFavouriteMovieById(movieId)
+                            ?.let { repository.addMovieToFavourites(it) }
+                    }
+                    _isFavorite.value = !currentState
+                } catch (e: Exception) {
+                    // Handle error
+                }
             }
-            _isFavorite.value = !movie.isFavorite
         }
     }
 }

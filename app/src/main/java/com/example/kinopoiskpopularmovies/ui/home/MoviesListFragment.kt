@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -13,7 +12,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import com.example.kinopoiskpopularmovies.R
 import com.example.kinopoiskpopularmovies.databinding.FragmentMovieListBinding
-import com.example.kinopoiskpopularmovies.ui.movie_details.MovieDetailsFragment
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 

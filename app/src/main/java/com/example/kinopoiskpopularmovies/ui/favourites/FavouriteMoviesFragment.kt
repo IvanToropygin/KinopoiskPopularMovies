@@ -4,14 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.example.kinopoiskpopularmovies.R
 import com.example.kinopoiskpopularmovies.databinding.FragmentFavouriteMoviesBinding
-import com.example.kinopoiskpopularmovies.domain.MovieItem
-import com.example.kinopoiskpopularmovies.ui.movie_details.MovieDetailsFragment
+import com.example.kinopoiskpopularmovies.ui.home.MoviesListFragmentDirections
 
 class FavouriteMoviesFragment : Fragment() {
 
@@ -25,7 +22,7 @@ class FavouriteMoviesFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         _binding = FragmentFavouriteMoviesBinding.inflate(inflater, container, false)
         return binding.root
@@ -38,30 +35,26 @@ class FavouriteMoviesFragment : Fragment() {
         observeViewModel()
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     private fun setupAdapter() {
         favouriteMoviesAdapter = FavouriteMoviesAdapter { movie ->
-            navigateToMovieDetails(movie)
-        }
+            findNavController()
+                .navigate(
+                    MoviesListFragmentDirections
+                        .actionNavigationHomeToMovieDetailsFragment(movie)
+                )
 
-        binding.recyclerViewFavouriteMovies.adapter = favouriteMoviesAdapter
+            binding.recyclerViewFavouriteMovies.adapter = favouriteMoviesAdapter
+        }
     }
 
     private fun observeViewModel() {
         viewModel.favorites.observe(viewLifecycleOwner) { movies ->
             favouriteMoviesAdapter.submitList(movies)
         }
-    }
-
-    private fun navigateToMovieDetails(movie: MovieItem) {
-        val bundle = bundleOf(MovieDetailsFragment.ARG_MOVIE to movie)
-        findNavController().navigate(
-            R.id.action_navigation_favourites_to_movieDetailsFragment,
-            bundle
-        )
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }
