@@ -7,4 +7,5 @@
     <string name="title_activity_main_bottom">MainBottomActivity</string>
     <string name="title_home">Home</string>
     <string name="title_favourites">Favourites</string>
+    <string name="favorite_is_empty_message">Здесь пока ничего нет... \n\nНа экране информации о фильме - нажмите на кнопку \"звездочка\" для добавления.</string>
 </resources>

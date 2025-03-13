@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.transition.TransitionManager
 import com.example.kinopoiskpopularmovies.databinding.FragmentFavouriteMoviesBinding
 
 class FavouriteMoviesFragment : Fragment() {
@@ -54,6 +55,15 @@ class FavouriteMoviesFragment : Fragment() {
     private fun observeViewModel() {
         viewModel.favorites.observe(viewLifecycleOwner) { movies ->
             favouriteMoviesAdapter.submitList(movies)
+
+            TransitionManager.beginDelayedTransition(binding.root as ViewGroup)
+            if (movies.isNullOrEmpty()) {
+                binding.emptyStateText.visibility = View.VISIBLE
+                binding.recyclerViewFavouriteMovies.visibility = View.GONE
+            } else {
+                binding.emptyStateText.visibility = View.GONE
+                binding.recyclerViewFavouriteMovies.visibility = View.VISIBLE
+            }
         }
     }
 }
