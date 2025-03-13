@@ -53,10 +53,11 @@ class MoviesListFragment : Fragment() {
 
     private fun setupAdapter() {
         moviesListAdapter = MoviesListAdapter { movie ->
-            findNavController().navigate(
-                R.id.action_navigation_home_to_movieDetailsFragment,
-                bundleOf(MovieDetailsFragment.ARG_MOVIE to movie.kinopoiskId)
-            )
+            findNavController()
+                .navigate(
+                    MoviesListFragmentDirections
+                        .actionNavigationHomeToMovieDetailsFragment(movie)
+                )
         }
 
         binding.recyclerViewMovies.adapter = moviesListAdapter.withLoadStateFooter(
@@ -69,7 +70,8 @@ class MoviesListFragment : Fragment() {
     }
 
     private fun observePagingData() {
-        lifecycleScope.launch {viewModel.pagedMovies.collectLatest {
+        lifecycleScope.launch {
+            viewModel.pagedMovies.collectLatest {
                 moviesListAdapter.submitData(it)
             }
         }

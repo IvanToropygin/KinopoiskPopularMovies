@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.kinopoiskpopularmovies.databinding.FragmentMovieDetailsBinding
 import com.example.kinopoiskpopularmovies.domain.MovieItem
@@ -24,7 +25,8 @@ class MovieDetailsFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        movie = requireArguments().get(ARG_MOVIE) as MovieItem
+        val args: MovieDetailsFragmentArgs by navArgs()
+        movie = args.movie
     }
 
     override fun onCreateView(
