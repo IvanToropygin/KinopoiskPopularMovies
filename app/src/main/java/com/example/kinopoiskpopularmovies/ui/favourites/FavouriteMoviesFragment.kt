@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.kinopoiskpopularmovies.databinding.FragmentFavouriteMoviesBinding
-import com.example.kinopoiskpopularmovies.ui.home.MoviesListFragmentDirections
 
 class FavouriteMoviesFragment : Fragment() {
 
@@ -44,12 +43,12 @@ class FavouriteMoviesFragment : Fragment() {
         favouriteMoviesAdapter = FavouriteMoviesAdapter { movie ->
             findNavController()
                 .navigate(
-                    MoviesListFragmentDirections
-                        .actionNavigationHomeToMovieDetailsFragment(movie)
+                    FavouriteMoviesFragmentDirections
+                        .actionNavigationFavouritesToMovieDetailsFragment(movie)
                 )
-
-            binding.recyclerViewFavouriteMovies.adapter = favouriteMoviesAdapter
         }
+
+        binding.recyclerViewFavouriteMovies.adapter = favouriteMoviesAdapter
     }
 
     private fun observeViewModel() {
