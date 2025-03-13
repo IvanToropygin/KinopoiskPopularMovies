@@ -1,4 +1,4 @@
-package com.example.kinopoiskpopularmovies.ui.favourite_movies
+package com.example.kinopoiskpopularmovies.ui.favourites
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -40,7 +40,16 @@ class FavouriteMoviesFragment : Fragment() {
 
         binding.recyclerViewFavouriteMovies.adapter = favouriteMoviesAdapter
 
-        favouriteMoviesAdapter.submitList(viewModel.getFavouriteMovies().value)
+//        favouriteMoviesAdapter.submitList(viewModel.getFavouriteMovies().value)
+        favouriteMoviesAdapter.submitList(listOf(Movie(
+            kinopoiskId = 5405057,
+            name = "Анора",
+            description = "Бруклин. Стриптизерша Анора, предпочитающая имя...",
+            countries = emptyList(),
+            rating = 1.1,
+            year = 2024,
+            posterUrl = "https://kinopoiskapiunofficial.tech/images/posters/kp/5405057.jpg"
+        )))
     }
 
     override fun onDestroyView() {

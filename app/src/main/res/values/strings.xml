@@ -4,4 +4,7 @@
     <string name="play_trailer">play trailer</string>
     <string name="favourite_button">favourite button</string>
     <string name="favourites">Favourite movies</string>
+    <string name="title_activity_main_bottom">MainBottomActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_favourites">Favourites</string>
 </resources>

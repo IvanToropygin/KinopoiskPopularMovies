@@ -1,4 +1,4 @@
-package com.example.kinopoiskpopularmovies.ui.movie_list
+package com.example.kinopoiskpopularmovies.ui.home
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState

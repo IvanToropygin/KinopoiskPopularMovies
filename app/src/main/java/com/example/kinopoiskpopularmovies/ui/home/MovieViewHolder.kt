@@ -1,4 +1,4 @@
-package com.example.kinopoiskpopularmovies.ui.movie_list
+package com.example.kinopoiskpopularmovies.ui.home
 
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kinopoiskpopularmovies.databinding.MovieItemBinding

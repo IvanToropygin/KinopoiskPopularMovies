@@ -1,4 +1,4 @@
-package com.example.kinopoiskpopularmovies.ui.movie_list
+package com.example.kinopoiskpopularmovies.ui.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
