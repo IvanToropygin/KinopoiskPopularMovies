@@ -17,6 +17,7 @@ class MovieDetailsFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val viewModel: MovieDetailsViewModel by viewModels()
+
     private lateinit var movie: MovieItem
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,7 +39,7 @@ class MovieDetailsFragment : Fragment() {
 
         setupViews()
         setupObservers()
-        viewModel.loadMovieFavouriteState(movie.kinopoiskId)
+        viewModel.checkFavoriteStatus(movie.kinopoiskId)
     }
 
     override fun onDestroyView() {
@@ -69,7 +70,7 @@ class MovieDetailsFragment : Fragment() {
             textViewDescription.text = movie.description
 
             imageViewStar.setOnClickListener {
-                viewModel.toggleFavorite(movie.kinopoiskId)
+                viewModel.toggleFavorite(movie)
             }
         }
     }

@@ -13,37 +13,31 @@ class MovieDetailsViewModel(application: Application) : AndroidViewModel(applica
 
     private val repository = MoviesRepositoryImpl(application)
 
-    private val _movie = MutableLiveData<MovieItem>()
-    val movie: LiveData<MovieItem> = _movie
-
-    private val _isFavorite = MutableLiveData<Boolean>(false)
+    private val _isFavorite = MutableLiveData<Boolean>()
     val isFavorite: LiveData<Boolean> = _isFavorite
 
-    fun loadMovieFavouriteState(movieId: Int) {
+    fun checkFavoriteStatus(movieId: Int) {
         viewModelScope.launch {
             try {
                 _isFavorite.value = repository.getFavouriteMovieById(movieId) != null
             } catch (e: Exception) {
-                // Handle error
+                // Обработка ошибки
             }
         }
     }
 
-    fun toggleFavorite(movieId: Int) {
+    fun toggleFavorite(movie: MovieItem) {
         viewModelScope.launch {
-            _isFavorite.value?.let { currentState ->
-                try {
-                    if (currentState) {
-                        repository.removeMovieFromFavourites(movieId)
-                    } else {
-                        // Получаем актуальные данные фильма при добавлении
-                        repository.getFavouriteMovieById(movieId)
-                            ?.let { repository.addMovieToFavourites(it) }
-                    }
-                    _isFavorite.value = !currentState
-                } catch (e: Exception) {
-                    // Handle error
+            try {
+                val current = _isFavorite.value ?: false
+                if (current) {
+                    repository.removeMovieFromFavourites(movie.kinopoiskId)
+                } else {
+                    repository.addMovieToFavourites(movie)
                 }
+                _isFavorite.value = !current
+            } catch (e: Exception) {
+                // Обработка ошибки
             }
         }
     }
