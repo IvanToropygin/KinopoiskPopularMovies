@@ -1,4 +1,4 @@
-package com.example.kinopoiskpopularmovies.ui.home
+package com.example.kinopoiskpopularmovies.presentation.home
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -6,6 +6,7 @@ import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
 import com.example.kinopoiskpopularmovies.R
 import com.example.kinopoiskpopularmovies.databinding.ActivityMainBottomBinding
 
@@ -22,7 +23,7 @@ class MainBottomActivity : AppCompatActivity() {
             .findFragmentById(R.id.nav_host_fragment_activity_main_bottom) as NavHostFragment
 
         navController = navHostFragment.navController
-
+        binding.navView.setupWithNavController(navController)
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when(destination.id) {
                 R.id.movieDetailsFragment -> hideBottomNav()

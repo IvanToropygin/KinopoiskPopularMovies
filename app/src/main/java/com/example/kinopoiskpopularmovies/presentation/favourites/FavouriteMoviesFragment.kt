@@ -1,4 +1,4 @@
-package com.example.kinopoiskpopularmovies.ui.favourites
+package com.example.kinopoiskpopularmovies.presentation.favourites
 
 import android.os.Bundle
 import android.view.LayoutInflater
