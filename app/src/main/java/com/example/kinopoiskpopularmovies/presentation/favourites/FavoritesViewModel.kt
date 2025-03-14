@@ -1,14 +1,17 @@
 package com.example.kinopoiskpopularmovies.presentation.favourites
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.kinopoiskpopularmovies.data.MoviesRepositoryImpl
+import androidx.lifecycle.ViewModel
 import com.example.kinopoiskpopularmovies.domain.MovieItem
+import com.example.kinopoiskpopularmovies.domain.MoviesRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class FavoritesViewModel(application: Application) : AndroidViewModel(application) {
-    private val repository = MoviesRepositoryImpl(application)
+@HiltViewModel
+class FavoritesViewModel @Inject constructor(
+    private val repository: MoviesRepository,
+) : ViewModel() {
 
     private val _favorites = MutableLiveData<List<MovieItem>>()
     val favorites: LiveData<List<MovieItem>> = _favorites

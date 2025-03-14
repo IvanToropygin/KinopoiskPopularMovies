@@ -12,9 +12,11 @@ import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import com.example.kinopoiskpopularmovies.R
 import com.example.kinopoiskpopularmovies.databinding.FragmentMovieListBinding
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class MoviesListFragment : Fragment() {
     private var _binding: FragmentMovieListBinding? = null
     private val binding get() = _binding!!
