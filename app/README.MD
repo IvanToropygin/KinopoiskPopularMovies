@@ -35,21 +35,8 @@
 - **Пагинация**: Paging 3
 - **UI**: ViewBinding, Material Components
 
-### Основные компоненты:
-| Компонент         | Технология                     |
-|--------------------|--------------------------------|
-| Сетевой слой       | Retrofit, OkHttp, Interceptors |
-| Локальное хранилище| Room, DAO, Migration           |
-| DI                 | Hilt, Scopes, Modules          |
-| Асинхронность      | Coroutines, Flow, StateFlow    |
-| Тестирование       | JUnit, Mockito, Espresso       |
-
 ## ⚙️ Установка
 
 1. Клонировать репозиторий:
-Добавить API ключ: получать на сайте (https://kinopoiskapiunofficial.tech/rates)
-
-В корне проекта в файл local.properties
-Добавить строку:
-
-API_KEY="ваш_ключ"
+2. Добавить в файл local.properties в корне проекта строку: API_KEY="ваш_ключ". 
+Ключ получить на сайте (https://kinopoiskapiunofficial.tech/rates)
