@@ -8,22 +8,4 @@ import com.example.kinopoiskpopularmovies.data.local.models.MovieEntity
 abstract class FavouriteMoviesDataBase : RoomDatabase() {
 
     abstract fun FavouritesMoviesDao(): FavouriteMoviesDao
-
-//    companion object {
-//        private const val DB_NAME = "favourite_movies.db"
-//        private var INSTANCE: FavouriteMoviesDataBase? = null
-//        private val LOCK = Any()
-//
-//        fun getInstance(application: Application): FavouriteMoviesDataBase {
-//            INSTANCE?.let { return it }
-//            synchronized(LOCK) { INSTANCE?.let { return it } }
-//            val db = Room.databaseBuilder(
-//                application,
-//                FavouriteMoviesDataBase::class.java,
-//                DB_NAME
-//            ).build()
-//            INSTANCE = db
-//            return db
-//        }
-//    }
 }
