@@ -1,4 +1,4 @@
-package com.example.kinopoiskpopularmovies.data.database.models
+package com.example.kinopoiskpopularmovies.data.local.models
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

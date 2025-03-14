@@ -10,7 +10,9 @@ import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.kinopoiskpopularmovies.databinding.FragmentMovieDetailsBinding
 import com.example.kinopoiskpopularmovies.domain.MovieItem
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MovieDetailsFragment : Fragment() {
 
     private var _binding: FragmentMovieDetailsBinding? = null

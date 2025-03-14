@@ -1,17 +1,19 @@
 package com.example.kinopoiskpopularmovies.presentation.movie_details
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.kinopoiskpopularmovies.data.MoviesRepositoryImpl
 import com.example.kinopoiskpopularmovies.domain.MovieItem
+import com.example.kinopoiskpopularmovies.domain.MoviesRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class MovieDetailsViewModel(application: Application) : AndroidViewModel(application) {
-
-    private val repository = MoviesRepositoryImpl(application)
+@HiltViewModel
+class MovieDetailsViewModel @Inject constructor(
+    private val repository: MoviesRepository,
+) : ViewModel() {
 
     private val _isFavorite = MutableLiveData<Boolean>()
     val isFavorite: LiveData<Boolean> = _isFavorite

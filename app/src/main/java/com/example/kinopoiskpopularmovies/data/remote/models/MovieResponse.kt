@@ -1,4 +1,4 @@
-package com.example.kinopoiskpopularmovies.data.network.models
+package com.example.kinopoiskpopularmovies.data.remote.models
 
 import com.google.gson.annotations.SerializedName
 

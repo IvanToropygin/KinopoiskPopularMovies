@@ -4,7 +4,6 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.kinopoiskpopularmovies.domain.MovieItem
 import com.example.kinopoiskpopularmovies.domain.MoviesRepository
-import kotlinx.coroutines.delay
 
 class MoviePagingSource(
     private val repository: MoviesRepository,
@@ -16,8 +15,6 @@ class MoviePagingSource(
         return try {
             val page = params.key ?: FIRST_PAGE
             val movies = repository.getPopularMovies(page)
-
-            delay(1000)
 
             LoadResult.Page(
                 data = movies,

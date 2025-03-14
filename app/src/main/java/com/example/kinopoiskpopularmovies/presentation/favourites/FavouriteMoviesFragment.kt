@@ -9,7 +9,9 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.transition.TransitionManager
 import com.example.kinopoiskpopularmovies.databinding.FragmentFavouriteMoviesBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class FavouriteMoviesFragment : Fragment() {
 
     private var _binding: FragmentFavouriteMoviesBinding? = null
