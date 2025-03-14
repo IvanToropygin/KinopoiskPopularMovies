@@ -17,13 +17,17 @@ class MovieDetailsViewModel @Inject constructor(
 
     private val _isFavorite = MutableLiveData<Boolean>()
     val isFavorite: LiveData<Boolean> = _isFavorite
+    
+    private val _errorMessage = MutableLiveData<String?>()
+    val errorMessage: MutableLiveData<String?> = _errorMessage
 
     fun checkFavoriteStatus(movieId: Int) {
         viewModelScope.launch {
             try {
                 _isFavorite.value = repository.getFavouriteMovieById(movieId) != null
             } catch (e: Exception) {
-                // Обработка ошибки
+                _errorMessage.value = "Ошибка при проверке статуса"
+                _errorMessage.value = null
             }
         }
     }
@@ -39,7 +43,8 @@ class MovieDetailsViewModel @Inject constructor(
                 }
                 _isFavorite.value = !current
             } catch (e: Exception) {
-                // Обработка ошибки
+                _errorMessage.value = "Не удалось обновить"
+                _errorMessage.value = null
             }
         }
     }

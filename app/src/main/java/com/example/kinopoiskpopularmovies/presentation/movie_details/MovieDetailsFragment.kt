@@ -10,6 +10,7 @@ import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.kinopoiskpopularmovies.databinding.FragmentMovieDetailsBinding
 import com.example.kinopoiskpopularmovies.domain.MovieItem
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -52,6 +53,12 @@ class MovieDetailsFragment : Fragment() {
     private fun setupObservers() {
         viewModel.isFavorite.observe(viewLifecycleOwner) { isFavorite ->
             updateStarIcon(isFavorite ?: false)
+        }
+
+        viewModel.errorMessage.observe(viewLifecycleOwner) { message ->
+            message?.let {
+                Snackbar.make(requireView(), it, Snackbar.LENGTH_SHORT).show()
+            }
         }
     }
 
