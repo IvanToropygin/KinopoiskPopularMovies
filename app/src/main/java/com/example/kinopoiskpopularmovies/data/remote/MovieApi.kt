@@ -1,6 +1,6 @@
-package com.example.kinopoiskpopularmovies.data.network
+package com.example.kinopoiskpopularmovies.data.remote
 
-import com.example.kinopoiskpopularmovies.data.network.models.MovieResponse
+import com.example.kinopoiskpopularmovies.data.remote.models.MovieResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 

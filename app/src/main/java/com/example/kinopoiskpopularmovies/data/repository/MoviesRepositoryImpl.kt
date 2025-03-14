@@ -1,10 +1,10 @@
-package com.example.kinopoiskpopularmovies.data
+package com.example.kinopoiskpopularmovies.data.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.map
-import com.example.kinopoiskpopularmovies.data.database.FavouriteMoviesDao
+import com.example.kinopoiskpopularmovies.data.local.FavouriteMoviesDao
 import com.example.kinopoiskpopularmovies.data.mappers.MovieMapper
-import com.example.kinopoiskpopularmovies.data.network.MovieApi
+import com.example.kinopoiskpopularmovies.data.remote.MovieApi
 import com.example.kinopoiskpopularmovies.domain.MovieItem
 import com.example.kinopoiskpopularmovies.domain.MoviesRepository
 import kotlinx.coroutines.Dispatchers

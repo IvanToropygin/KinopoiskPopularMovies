@@ -1,10 +1,8 @@
-package com.example.kinopoiskpopularmovies.data.database
+package com.example.kinopoiskpopularmovies.data.local
 
-import android.app.Application
 import androidx.room.Database
-import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.kinopoiskpopularmovies.data.database.models.MovieEntity
+import com.example.kinopoiskpopularmovies.data.local.models.MovieEntity
 
 @Database(entities = [MovieEntity::class], version = 1, exportSchema = false)
 abstract class FavouriteMoviesDataBase : RoomDatabase() {

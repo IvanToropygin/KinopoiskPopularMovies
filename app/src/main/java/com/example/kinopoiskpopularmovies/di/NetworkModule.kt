@@ -1,7 +1,7 @@
 package com.example.kinopoiskpopularmovies.di
 
-import com.example.kinopoiskpopularmovies.data.network.ApiKeyInterceptor
-import com.example.kinopoiskpopularmovies.data.network.MovieApi
+import com.example.kinopoiskpopularmovies.data.remote.ApiKeyInterceptor
+import com.example.kinopoiskpopularmovies.data.remote.MovieApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

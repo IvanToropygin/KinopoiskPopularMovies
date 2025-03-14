@@ -1,4 +1,4 @@
-package com.example.kinopoiskpopularmovies
+package com.example.kinopoiskpopularmovies.di
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

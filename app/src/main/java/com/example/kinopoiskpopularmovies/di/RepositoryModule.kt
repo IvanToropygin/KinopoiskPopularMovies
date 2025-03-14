@@ -1,9 +1,9 @@
 package com.example.kinopoiskpopularmovies.di
 
-import com.example.kinopoiskpopularmovies.data.MoviesRepositoryImpl
-import com.example.kinopoiskpopularmovies.data.database.FavouriteMoviesDao
+import com.example.kinopoiskpopularmovies.data.repository.MoviesRepositoryImpl
+import com.example.kinopoiskpopularmovies.data.local.FavouriteMoviesDao
 import com.example.kinopoiskpopularmovies.data.mappers.MovieMapper
-import com.example.kinopoiskpopularmovies.data.network.MovieApi
+import com.example.kinopoiskpopularmovies.data.remote.MovieApi
 import com.example.kinopoiskpopularmovies.domain.MoviesRepository
 import dagger.Module
 import dagger.Provides

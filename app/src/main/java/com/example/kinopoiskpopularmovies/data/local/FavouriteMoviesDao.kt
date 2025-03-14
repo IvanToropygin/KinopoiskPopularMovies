@@ -1,11 +1,11 @@
-package com.example.kinopoiskpopularmovies.data.database
+package com.example.kinopoiskpopularmovies.data.local
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.kinopoiskpopularmovies.data.database.models.MovieEntity
+import com.example.kinopoiskpopularmovies.data.local.models.MovieEntity
 
 @Dao
 interface FavouriteMoviesDao {

@@ -1,7 +1,7 @@
 package com.example.kinopoiskpopularmovies.data.mappers
 
-import com.example.kinopoiskpopularmovies.data.database.models.MovieEntity
-import com.example.kinopoiskpopularmovies.data.network.models.MovieDto
+import com.example.kinopoiskpopularmovies.data.local.models.MovieEntity
+import com.example.kinopoiskpopularmovies.data.remote.models.MovieDto
 import com.example.kinopoiskpopularmovies.domain.MovieItem
 
 class MovieMapper {

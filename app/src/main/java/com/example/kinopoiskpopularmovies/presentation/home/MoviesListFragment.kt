@@ -61,7 +61,7 @@ class MoviesListFragment : Fragment() {
         }
 
         binding.recyclerViewMovies.adapter = moviesListAdapter.withLoadStateFooter(
-            footer = MyLoadStateAdapter { moviesListAdapter.retry() }
+            footer = MyLoadStateAdapter()
         )
 
         moviesListAdapter.addLoadStateListener { loadState ->

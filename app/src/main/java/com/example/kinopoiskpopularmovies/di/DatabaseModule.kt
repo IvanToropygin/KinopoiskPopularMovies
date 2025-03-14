@@ -2,8 +2,8 @@ package com.example.kinopoiskpopularmovies.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.kinopoiskpopularmovies.data.database.FavouriteMoviesDao
-import com.example.kinopoiskpopularmovies.data.database.FavouriteMoviesDataBase
+import com.example.kinopoiskpopularmovies.data.local.FavouriteMoviesDao
+import com.example.kinopoiskpopularmovies.data.local.FavouriteMoviesDataBase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
