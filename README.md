@@ -38,5 +38,6 @@
 ## ⚙️ Установка
 
 1. Клонировать репозиторий:
-2. Добавить в файл local.properties в корне проекта строку: API_KEY="ваш_ключ". 
+2. Добавить в файл local.properties в корне проекта строку: API_KEY="ваш_ключ".
+
 Ключ получить на сайте (https://kinopoiskapiunofficial.tech/rates)
