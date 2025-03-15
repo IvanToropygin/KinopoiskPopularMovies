@@ -1,6 +1,5 @@
 package com.example.kinopoiskpopularmovies.presentation.movie_details
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -58,10 +57,14 @@ class MovieDetailsViewModel @Inject constructor(
     fun loadTrailers(movieId: Int) {
         viewModelScope.launch {
             try {
-                _trailers.value = repository.getTrailers(movieId)
-                Log.d("loadTrailers", trailers.value?.size.toString())
+                val trailers = repository.getTrailers(movieId)
+                    .filter { it.url.isNotBlank() }
+                    .takeIf { it.isNotEmpty() }
+                    ?: throw Exception("Нет доступных трейлеров")
+
+                _trailers.postValue(trailers)
             } catch (e: Exception) {
-                _trailersError.value = "Ошибка загрузки трейлеров"
+                _trailersError.postValue("Ошибка загрузки трейлеров: ${e.message}")
             }
         }
     }

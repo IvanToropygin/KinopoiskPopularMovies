@@ -11,7 +11,6 @@ import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.example.kinopoiskpopularmovies.R
@@ -66,14 +65,7 @@ class MovieDetailsFragment : Fragment(), OnTrailerClickListener {
 
     private fun setupTrailersRecycler() {
         trailersAdapter = TrailersAdapter(this)
-        binding.recyclerViewTrailers.apply {
-            adapter = trailersAdapter
-            layoutManager = LinearLayoutManager(
-                requireContext(),
-                LinearLayoutManager.HORIZONTAL,
-                false
-            )
-        }
+        binding.recyclerViewTrailers.adapter = trailersAdapter
     }
 
     private fun setupObservers() {
@@ -90,7 +82,8 @@ class MovieDetailsFragment : Fragment(), OnTrailerClickListener {
 
         viewModel.trailers.observe(viewLifecycleOwner) { trailers ->
             trailersAdapter.submitList(trailers)
-            binding.textViewTrailers.visibility = if (trailers.isNotEmpty()) View.VISIBLE else View.GONE
+            binding.textViewTrailers.visibility =
+                if (trailers.isNotEmpty()) View.VISIBLE else View.GONE
         }
 
         viewModel.trailersError.observe(viewLifecycleOwner) { error ->
@@ -108,7 +101,8 @@ class MovieDetailsFragment : Fragment(), OnTrailerClickListener {
                 val intent = Intent(Intent.ACTION_VIEW, url.toUri())
                 startActivity(intent)
             } catch (e: ActivityNotFoundException) {
-                Snackbar.make(requireView(), "Не удалось открыть ссылку", Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(requireView(), "Не удалось открыть ссылку", Snackbar.LENGTH_SHORT)
+                    .show()
             }
         } else {
             Snackbar.make(requireView(), "Ссылка недоступна", Snackbar.LENGTH_SHORT).show()
@@ -131,7 +125,8 @@ class MovieDetailsFragment : Fragment(), OnTrailerClickListener {
                     rating > 4 -> R.drawable.circle_orange
                     else -> R.drawable.circle_red
                 }
-                textViewRating.background = ContextCompat.getDrawable(requireContext(), backgroundDrawableId)
+                textViewRating.background =
+                    ContextCompat.getDrawable(requireContext(), backgroundDrawableId)
                 textViewRating.text = "%.1f".format(rating)
             }
 
