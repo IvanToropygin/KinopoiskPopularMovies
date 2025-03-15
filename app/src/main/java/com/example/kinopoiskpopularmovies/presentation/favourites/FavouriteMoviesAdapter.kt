@@ -34,9 +34,14 @@ class FavouriteMoviesAdapter(
                     .into(imageViewPoster)
 
                 textViewTitle.text = movie.name
+                if (movie.nameOriginal == "null") textViewOriginalTitle.visibility = View.GONE
+                else textViewOriginalTitle.text = root.context.getString(R.string.original_name_label, movie.nameOriginal)
 
-                if (movie.rating == 0.0) textViewRating.visibility = View.GONE
-                else textViewRating.text = root.context.getString(R.string.rating_label, movie.rating.toString())
+                if (movie.kinopoiskRating == 0.0) textViewRating.visibility = View.GONE
+                else textViewRating.text = root.context.getString(R.string.rating_label, movie.kinopoiskRating.toString())
+
+                if (movie.imdbRating == 0.0) textViewRatingImdb.visibility = View.GONE
+                else textViewRatingImdb.text = root.context.getString(R.string.ratingIMdb_label, movie.imdbRating.toString())
 
                 if (movie.year == 0) textViewYear.visibility = View.GONE
                 else textViewYear.text = root.context.getString(R.string.year_label, movie.year)

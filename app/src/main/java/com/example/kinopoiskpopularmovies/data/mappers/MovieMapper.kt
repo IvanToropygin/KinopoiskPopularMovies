@@ -9,11 +9,13 @@ class MovieMapper {
     // Network → Domain
     fun mapToDomain(networkModel: MovieDto) = MovieItem(
         kinopoiskId = networkModel.kinopoiskId,
-        name = networkModel.name ?: "name is null",
-        description = networkModel.description ?: "description is null",
-        rating = networkModel.rating ?: 0.0,
+        name = networkModel.name ?: "null",
+        nameOriginal = networkModel.nameOriginal ?: "null",
+        imdbRating = networkModel.ratingImdb ?: 0.0,
+        description = networkModel.description ?: "null",
+        kinopoiskRating = networkModel.kinopoiskRating ?: 0.0,
         year = networkModel.year ?: 0,
-        posterUrl = networkModel.posterUrl ?: "",
+        posterUrl = networkModel.posterUrl ?: "null",
         isFavorite = false // by default
     )
 
@@ -21,8 +23,10 @@ class MovieMapper {
     fun mapToDomain(entity: MovieEntity) = MovieItem(
         kinopoiskId = entity.id,
         name = entity.name,
-        description = entity.description ?: "description is null",
-        rating = entity.rating ?: 0.0,
+        nameOriginal = entity.nameOriginal,
+        description = entity.description ?: "null",
+        kinopoiskRating = entity.rating ?: 0.0,
+        imdbRating = entity.ratingImdb ?: 0.0,
         year = entity.year ?: 0,
         posterUrl = entity.posterUrl ?: "",
         isFavorite = true // in database
@@ -32,8 +36,10 @@ class MovieMapper {
     fun mapToEntity(domainModel: MovieItem) = MovieEntity(
         id = domainModel.kinopoiskId,
         name = domainModel.name,
+        nameOriginal = domainModel.nameOriginal,
         description = domainModel.description,
-        rating = domainModel.rating,
+        rating = domainModel.kinopoiskRating,
+        ratingImdb = domainModel.imdbRating,
         year = domainModel.year,
         posterUrl = domainModel.posterUrl
     )

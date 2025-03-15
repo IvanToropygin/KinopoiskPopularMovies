@@ -13,11 +13,17 @@ data class MovieEntity(
     @ColumnInfo(name = "name")
     val name: String,
 
+    @ColumnInfo(name = "original_name")
+    val nameOriginal: String,
+
     @ColumnInfo(name = "description")
     val description: String?,
 
     @ColumnInfo(name = "rating")
     val rating: Double?,
+
+    @ColumnInfo(name = "rating_imdb")
+    val ratingImdb: Double?,
 
     @ColumnInfo(name = "year")
     val year: Int?,

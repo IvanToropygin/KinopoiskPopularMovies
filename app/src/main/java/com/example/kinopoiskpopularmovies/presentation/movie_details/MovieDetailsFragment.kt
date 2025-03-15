@@ -71,7 +71,7 @@ class MovieDetailsFragment : Fragment() {
                 .into(imageViewPoster)
 
 
-            val rating = movie.rating
+            val rating = movie.kinopoiskRating
 
             if (rating == 0.0) {
                 textViewRating.visibility = View.GONE
