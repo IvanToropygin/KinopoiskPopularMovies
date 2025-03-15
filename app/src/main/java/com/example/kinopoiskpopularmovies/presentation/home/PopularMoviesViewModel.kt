@@ -5,7 +5,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.cachedIn
-import com.example.kinopoiskpopularmovies.domain.MoviesRepository
+import com.example.kinopoiskpopularmovies.domain.repository.MoviesRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -20,6 +20,6 @@ class PopularMoviesViewModel @Inject constructor(
             enablePlaceholders = false,
             initialLoadSize = 20
         ),
-        pagingSourceFactory = { MoviePagingSource(repository) }
+        pagingSourceFactory = { PopularMoviesPagingSource(repository) }
     ).flow.cachedIn(viewModelScope)
 }

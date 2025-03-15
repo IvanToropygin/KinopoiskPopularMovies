@@ -16,7 +16,7 @@
         android:theme="@style/Theme.KinopoiskPopularMovies"
         tools:targetApi="31">
         <activity
-            android:name=".presentation.home.MainBottomActivity"
+            android:name=".presentation.MainBottomActivity"
             android:exported="true"
             android:theme="@style/Theme.KinopoiskPopularMovies">
             <intent-filter>

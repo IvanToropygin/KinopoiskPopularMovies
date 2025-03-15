@@ -2,8 +2,8 @@ package com.example.kinopoiskpopularmovies
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
-import com.example.kinopoiskpopularmovies.domain.MovieItem
-import com.example.kinopoiskpopularmovies.domain.MoviesRepository
+import com.example.kinopoiskpopularmovies.domain.models.MovieItem
+import com.example.kinopoiskpopularmovies.domain.repository.MoviesRepository
 import com.example.kinopoiskpopularmovies.presentation.favourites.FavoritesViewModel
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull

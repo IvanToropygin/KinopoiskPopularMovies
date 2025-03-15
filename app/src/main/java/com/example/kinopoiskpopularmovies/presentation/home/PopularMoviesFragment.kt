@@ -11,14 +11,14 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import com.example.kinopoiskpopularmovies.R
-import com.example.kinopoiskpopularmovies.databinding.FragmentMovieListBinding
+import com.example.kinopoiskpopularmovies.databinding.FragmentPopularMoviesBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class MoviesListFragment : Fragment() {
-    private var _binding: FragmentMovieListBinding? = null
+class PopularMoviesFragment : Fragment() {
+    private var _binding: FragmentPopularMoviesBinding? = null
     private val binding get() = _binding!!
 
     private val viewModel: PopularMoviesViewModel by viewModels()
@@ -29,7 +29,7 @@ class MoviesListFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-        _binding = FragmentMovieListBinding.inflate(inflater, container, false)
+        _binding = FragmentPopularMoviesBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -55,7 +55,7 @@ class MoviesListFragment : Fragment() {
         moviesListAdapter = MoviesListAdapter { movie ->
             findNavController()
                 .navigate(
-                    MoviesListFragmentDirections
+                    PopularMoviesFragmentDirections
                         .actionNavigationHomeToMovieDetailsFragment(movie)
                 )
         }

@@ -2,7 +2,7 @@ package com.example.kinopoiskpopularmovies.data.mappers
 
 import com.example.kinopoiskpopularmovies.data.local.models.MovieEntity
 import com.example.kinopoiskpopularmovies.data.remote.models.MovieDto
-import com.example.kinopoiskpopularmovies.domain.MovieItem
+import com.example.kinopoiskpopularmovies.domain.models.MovieItem
 
 class MovieMapper {
 

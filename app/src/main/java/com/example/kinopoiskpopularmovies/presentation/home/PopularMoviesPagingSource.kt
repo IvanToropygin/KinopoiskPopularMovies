@@ -2,10 +2,10 @@ package com.example.kinopoiskpopularmovies.presentation.home
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.example.kinopoiskpopularmovies.domain.MovieItem
-import com.example.kinopoiskpopularmovies.domain.MoviesRepository
+import com.example.kinopoiskpopularmovies.domain.models.MovieItem
+import com.example.kinopoiskpopularmovies.domain.repository.MoviesRepository
 
-class MoviePagingSource(
+class PopularMoviesPagingSource(
     private val repository: MoviesRepository,
 ) : PagingSource<Int, MovieItem>() {
 

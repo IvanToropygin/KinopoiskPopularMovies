@@ -6,9 +6,9 @@ import com.example.kinopoiskpopularmovies.data.local.FavouriteMoviesDao
 import com.example.kinopoiskpopularmovies.data.mappers.MovieMapper
 import com.example.kinopoiskpopularmovies.data.mappers.TrailerMapper
 import com.example.kinopoiskpopularmovies.data.remote.MovieApi
-import com.example.kinopoiskpopularmovies.domain.MovieItem
-import com.example.kinopoiskpopularmovies.domain.MoviesRepository
-import com.example.kinopoiskpopularmovies.domain.TrailerItem
+import com.example.kinopoiskpopularmovies.domain.models.MovieItem
+import com.example.kinopoiskpopularmovies.domain.repository.MoviesRepository
+import com.example.kinopoiskpopularmovies.domain.models.TrailerItem
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
