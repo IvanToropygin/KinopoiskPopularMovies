@@ -13,4 +13,5 @@
     <string name="year_label">Год: %s</string>
     <string name="original_name_label">Название в оригинале: %s</string>
     <string name="data_is_null_message">данных нет ((</string>
+    <string name="trailers_title">Трейлеры</string>
 </resources>
