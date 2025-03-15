@@ -1,9 +1,9 @@
 package com.example.kinopoiskpopularmovies
 
 import androidx.paging.PagingSource
-import com.example.kinopoiskpopularmovies.domain.MovieItem
-import com.example.kinopoiskpopularmovies.domain.MoviesRepository
-import com.example.kinopoiskpopularmovies.presentation.home.MoviePagingSource
+import com.example.kinopoiskpopularmovies.domain.models.MovieItem
+import com.example.kinopoiskpopularmovies.domain.repository.MoviesRepository
+import com.example.kinopoiskpopularmovies.presentation.home.PopularMoviesPagingSource
 import com.example.kinopoiskpopularmovies.presentation.home.PopularMoviesViewModel
 import junit.framework.Assert.assertNotNull
 import junit.framework.TestCase.assertEquals
@@ -53,7 +53,7 @@ class PopularMoviesViewModelTest {
 
         `when`(mockRepository.getPopularMovies(1)).thenReturn(testMovies)
 
-        val pagingSource = MoviePagingSource(mockRepository)
+        val pagingSource = PopularMoviesPagingSource(mockRepository)
 
         val result = pagingSource.load(
             PagingSource.LoadParams.Refresh(

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    tools:context=".presentation.home.MainBottomActivity">
+    tools:context=".presentation.MainBottomActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,13 +14,13 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="8dp">
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/imageViewPoster"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="12dp"
                 android:adjustViewBounds="true"
                 android:contentDescription="@string/poster_image"
                 app:layout_constraintTop_toTopOf="parent"
@@ -30,35 +30,37 @@
                 android:id="@+id/textViewRating"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="20dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="12dp"
                 android:contentDescription="@string/favourite_button"
                 android:textColor="@color/kinopoisk_background"
                 app:layout_constraintBottom_toBottomOf="@id/textViewTitle"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="@id/imageViewPoster"
                 app:layout_constraintTop_toTopOf="@+id/textViewTitle"
                 tools:background="@drawable/circle_green"
                 tools:text="5.5" />
 
             <TextView
                 android:id="@+id/textViewTitle"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="16dp"
                 android:textSize="20sp"
                 android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/imageViewPoster"
                 app:layout_constraintStart_toEndOf="@+id/textViewRating"
+                app:layout_constraintStart_toStartOf="@+id/imageViewPoster"
                 app:layout_constraintTop_toBottomOf="@id/imageViewPoster"
                 tools:text="Movie Title" />
 
             <TextView
                 android:id="@+id/textViewYear"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="12dp"
                 android:textColor="@android:color/holo_orange_dark"
                 android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@+id/imageViewPoster"
                 app:layout_constraintTop_toBottomOf="@id/textViewTitle"
                 tools:text="2023" />
 
@@ -66,6 +68,7 @@
                 android:id="@+id/imageViewFavourite"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="12dp"
                 android:layout_marginEnd="20dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:contentDescription="@string/favourite_button"
@@ -78,9 +81,8 @@
                 android:id="@+id/textViewDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="8dp"
+                android:layout_marginHorizontal="12dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
                 android:textSize="16sp"
                 android:textStyle="italic"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -90,13 +92,13 @@
 
             <TextView
                 android:id="@+id/textViewTrailers"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginTop="12dp"
                 android:text="@string/trailers_title"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textViewDescription" />
 
             <androidx.recyclerview.widget.RecyclerView

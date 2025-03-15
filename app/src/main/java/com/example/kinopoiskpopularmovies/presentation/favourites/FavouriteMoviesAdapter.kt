@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.kinopoiskpopularmovies.R
 import com.example.kinopoiskpopularmovies.databinding.MovieItemFavouriteListBinding
-import com.example.kinopoiskpopularmovies.domain.MovieItem
+import com.example.kinopoiskpopularmovies.domain.models.MovieItem
 
 class FavouriteMoviesAdapter(
     private val onFavouriteMovieClickListener: OnFavouriteMovieClickListener,

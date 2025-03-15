@@ -1,4 +1,4 @@
-package com.example.kinopoiskpopularmovies.domain
+package com.example.kinopoiskpopularmovies.domain.models
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

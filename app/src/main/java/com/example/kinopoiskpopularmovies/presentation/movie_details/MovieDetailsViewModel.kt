@@ -4,9 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.kinopoiskpopularmovies.domain.MovieItem
-import com.example.kinopoiskpopularmovies.domain.MoviesRepository
-import com.example.kinopoiskpopularmovies.domain.TrailerItem
+import com.example.kinopoiskpopularmovies.domain.models.MovieItem
+import com.example.kinopoiskpopularmovies.domain.repository.MoviesRepository
+import com.example.kinopoiskpopularmovies.domain.models.TrailerItem
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

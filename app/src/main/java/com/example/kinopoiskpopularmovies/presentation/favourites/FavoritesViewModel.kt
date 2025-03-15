@@ -3,8 +3,8 @@ package com.example.kinopoiskpopularmovies.presentation.favourites
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.kinopoiskpopularmovies.domain.MovieItem
-import com.example.kinopoiskpopularmovies.domain.MoviesRepository
+import com.example.kinopoiskpopularmovies.domain.models.MovieItem
+import com.example.kinopoiskpopularmovies.domain.repository.MoviesRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

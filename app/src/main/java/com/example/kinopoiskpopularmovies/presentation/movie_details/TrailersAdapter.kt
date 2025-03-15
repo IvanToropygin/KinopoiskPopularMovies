@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kinopoiskpopularmovies.databinding.TrailerItemBinding
-import com.example.kinopoiskpopularmovies.domain.TrailerItem
+import com.example.kinopoiskpopularmovies.domain.models.TrailerItem
 
 class TrailersAdapter(
     private val onTrailerClickListener: OnTrailerClickListener

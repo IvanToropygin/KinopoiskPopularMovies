@@ -1,8 +1,8 @@
 package com.example.kinopoiskpopularmovies
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.example.kinopoiskpopularmovies.domain.MovieItem
-import com.example.kinopoiskpopularmovies.domain.MoviesRepository
+import com.example.kinopoiskpopularmovies.domain.models.MovieItem
+import com.example.kinopoiskpopularmovies.domain.repository.MoviesRepository
 import com.example.kinopoiskpopularmovies.presentation.movie_details.MovieDetailsViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi

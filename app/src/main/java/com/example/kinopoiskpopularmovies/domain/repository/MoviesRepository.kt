@@ -1,6 +1,8 @@
-package com.example.kinopoiskpopularmovies.domain
+package com.example.kinopoiskpopularmovies.domain.repository
 
 import androidx.lifecycle.LiveData
+import com.example.kinopoiskpopularmovies.domain.models.MovieItem
+import com.example.kinopoiskpopularmovies.domain.models.TrailerItem
 
 interface MoviesRepository {
 

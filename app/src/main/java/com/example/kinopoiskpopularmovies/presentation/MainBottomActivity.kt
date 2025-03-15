@@ -1,4 +1,4 @@
-package com.example.kinopoiskpopularmovies.presentation.home
+package com.example.kinopoiskpopularmovies.presentation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

@@ -6,19 +6,19 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import com.bumptech.glide.Glide
 import com.example.kinopoiskpopularmovies.databinding.MovieItemPopularListBinding
-import com.example.kinopoiskpopularmovies.domain.MovieItem
+import com.example.kinopoiskpopularmovies.domain.models.MovieItem
 
 class MoviesListAdapter(
     private val onMovieClickListener: OnMovieClickListener,
-) : PagingDataAdapter<MovieItem, MovieViewHolder>(DiffUtilCallback()) {
+) : PagingDataAdapter<MovieItem, PopularMoviesViewHolder>(DiffUtilCallback()) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
-        return MovieViewHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PopularMoviesViewHolder {
+        return PopularMoviesViewHolder(
             MovieItemPopularListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         )
     }
 
-    override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: PopularMoviesViewHolder, position: Int) {
         val item = getItem(position)
         item?.let { movie ->
             with(holder.binding) {

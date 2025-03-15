@@ -1,7 +1,7 @@
 package com.example.kinopoiskpopularmovies.data.mappers
 
 import com.example.kinopoiskpopularmovies.data.remote.models.TrailerDto
-import com.example.kinopoiskpopularmovies.domain.TrailerItem
+import com.example.kinopoiskpopularmovies.domain.models.TrailerItem
 
 class TrailerMapper {
 
