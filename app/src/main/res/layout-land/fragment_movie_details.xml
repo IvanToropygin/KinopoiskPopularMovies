@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,7 +8,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="horizontal"
         android:padding="12dp">
 
@@ -21,7 +21,7 @@
             android:contentDescription="@string/poster_image"
             tools:src="@tools:sample/avatars" />
 
-        <ScrollView
+        <androidx.core.widget.NestedScrollView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="2"
@@ -35,8 +35,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical">
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/textViewRating"
@@ -56,7 +56,6 @@
                         android:textSize="18sp"
                         android:textStyle="bold"
                         tools:text="Movie Title" />
-
                 </LinearLayout>
 
                 <LinearLayout
@@ -77,12 +76,11 @@
 
                     <ImageView
                         android:id="@+id/imageViewFavourite"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
                         android:background="?attr/selectableItemBackgroundBorderless"
                         android:contentDescription="@string/favourite_button"
                         tools:src="@drawable/ic_heart" />
-
                 </LinearLayout>
 
                 <TextView
@@ -111,8 +109,7 @@
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     tools:itemCount="3"
                     tools:listitem="@layout/trailer_item" />
-
             </LinearLayout>
-        </ScrollView>
+        </androidx.core.widget.NestedScrollView>
     </LinearLayout>
-</androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
