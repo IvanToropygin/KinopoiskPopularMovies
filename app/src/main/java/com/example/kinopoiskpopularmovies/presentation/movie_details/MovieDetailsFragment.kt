@@ -78,7 +78,7 @@ class MovieDetailsFragment : Fragment() {
             } else {
                 val backgroundDrawableId =
                 when {
-                    (rating > 7) -> R.drawable. circle_green
+                    (rating > 6) -> R.drawable. circle_green
                     (rating > 4) -> R.drawable. circle_orange
                     else -> R.drawable. circle_red
                 }

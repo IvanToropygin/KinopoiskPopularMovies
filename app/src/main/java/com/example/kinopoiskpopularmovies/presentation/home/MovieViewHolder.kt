@@ -1,6 +1,6 @@
 package com.example.kinopoiskpopularmovies.presentation.home
 
 import androidx.recyclerview.widget.RecyclerView
-import com.example.kinopoiskpopularmovies.databinding.MovieItemBinding
+import com.example.kinopoiskpopularmovies.databinding.MovieItemPopularListBinding
 
-class MovieViewHolder(val binding: MovieItemBinding) : RecyclerView.ViewHolder(binding.root)
+class MovieViewHolder(val binding: MovieItemPopularListBinding) : RecyclerView.ViewHolder(binding.root)

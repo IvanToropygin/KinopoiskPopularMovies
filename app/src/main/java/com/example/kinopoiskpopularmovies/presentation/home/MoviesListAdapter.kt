@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import com.bumptech.glide.Glide
-import com.example.kinopoiskpopularmovies.databinding.MovieItemBinding
+import com.example.kinopoiskpopularmovies.databinding.MovieItemPopularListBinding
 import com.example.kinopoiskpopularmovies.domain.MovieItem
 
 class MoviesListAdapter(
@@ -14,7 +14,7 @@ class MoviesListAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
         return MovieViewHolder(
-            MovieItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            MovieItemPopularListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         )
     }
 

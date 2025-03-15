@@ -1,12 +1,14 @@
 package com.example.kinopoiskpopularmovies.presentation.favourites
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.kinopoiskpopularmovies.databinding.MovieItemBinding
+import com.example.kinopoiskpopularmovies.R
+import com.example.kinopoiskpopularmovies.databinding.MovieItemFavouriteListBinding
 import com.example.kinopoiskpopularmovies.domain.MovieItem
 
 class FavouriteMoviesAdapter(
@@ -15,7 +17,7 @@ class FavouriteMoviesAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavouriteMovieViewHolder {
         return FavouriteMovieViewHolder(
-            MovieItemBinding.inflate(
+            MovieItemFavouriteListBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -31,13 +33,21 @@ class FavouriteMoviesAdapter(
                     .load(movie.posterUrl)
                     .into(imageViewPoster)
 
+                textViewTitle.text = movie.name
+
+                if (movie.rating == 0.0) textViewRating.visibility = View.GONE
+                else textViewRating.text = root.context.getString(R.string.rating_label, movie.rating.toString())
+
+                if (movie.year == 0) textViewYear.visibility = View.GONE
+                else textViewYear.text = root.context.getString(R.string.year_label, movie.year)
+
                 root.setOnClickListener { onFavouriteMovieClickListener.onMovieClick(movie) }
             }
         }
     }
 }
 
-class FavouriteMovieViewHolder(val binding: MovieItemBinding) :
+class FavouriteMovieViewHolder(val binding: MovieItemFavouriteListBinding) :
     RecyclerView.ViewHolder(binding.root)
 
 class DiffUtilCallback : DiffUtil.ItemCallback<MovieItem>() {

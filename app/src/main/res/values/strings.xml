@@ -8,4 +8,6 @@
     <string name="title_home">Home</string>
     <string name="title_favourites">Favourites</string>
     <string name="favorite_is_empty_message">Здесь пока ничего нет... \n\nДобавить можно на экране информации о фильме.</string>
+    <string name="rating_label">Рейтинг Kinopoisk: %s</string>
+    <string name="year_label">Год: %d</string>
 </resources>
