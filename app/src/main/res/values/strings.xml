@@ -10,6 +10,7 @@
     <string name="favorite_is_empty_message">Здесь пока ничего нет... \n\nДобавить можно на экране информации о фильме.</string>
     <string name="rating_label">Рейтинг Kinopoisk: %s</string>
     <string name="ratingIMdb_label">Рейтинг Imdb: %s</string>
-    <string name="year_label">Год: %d</string>
+    <string name="year_label">Год: %s</string>
     <string name="original_name_label">Название в оригинале: %s</string>
+    <string name="data_is_null_message">данных нет ((</string>
 </resources>

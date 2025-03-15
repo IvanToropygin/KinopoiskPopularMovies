@@ -3,6 +3,8 @@ package com.example.kinopoiskpopularmovies.presentation.favourites
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.annotation.StringRes
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -26,30 +28,50 @@ class FavouriteMoviesAdapter(
     }
 
     override fun onBindViewHolder(holder: FavouriteMovieViewHolder, position: Int) {
-        val movie = getItem(position)
-        if (movie != null) {
-            with(holder.binding) {
-                Glide.with(imageViewPoster.context)
-                    .load(movie.posterUrl)
-                    .into(imageViewPoster)
+        val movie = getItem(position) ?: return
+        with(holder.binding) {
+            Glide.with(imageViewPoster.context)
+                .load(movie.posterUrl)
+                .into(imageViewPoster)
 
-                textViewTitle.text = movie.name
-                if (movie.nameOriginal == "null") textViewOriginalTitle.visibility = View.GONE
-                else textViewOriginalTitle.text = root.context.getString(R.string.original_name_label, movie.nameOriginal)
+            textViewTitle.text = movie.name
+            textViewOriginalTitle.handleOriginalTitle(movie.nameOriginal)
 
-                if (movie.kinopoiskRating == 0.0) textViewRating.visibility = View.GONE
-                else textViewRating.text = root.context.getString(R.string.rating_label, movie.kinopoiskRating.toString())
+            textViewRating.handleRating(R.string.rating_label, movie.kinopoiskRating)
+            textViewRatingImdb.handleRating(R.string.ratingIMdb_label, movie.imdbRating)
 
-                if (movie.imdbRating == 0.0) textViewRatingImdb.visibility = View.GONE
-                else textViewRatingImdb.text = root.context.getString(R.string.ratingIMdb_label, movie.imdbRating.toString())
+            textViewYear.handleYear(movie.year)
 
-                if (movie.year == 0) textViewYear.visibility = View.GONE
-                else textViewYear.text = root.context.getString(R.string.year_label, movie.year)
-
-                root.setOnClickListener { onFavouriteMovieClickListener.onMovieClick(movie) }
-            }
+            root.setOnClickListener { onFavouriteMovieClickListener.onMovieClick(movie) }
         }
     }
+
+    private fun TextView.handleOriginalTitle(title: String?) {
+        visibility = if (title.isNullOrEmpty() || title == "null") {
+            View.GONE
+        } else {
+            text = context.getString(R.string.original_name_label, title)
+            View.VISIBLE
+        }
+    }
+
+    private fun TextView.handleRating(@StringRes labelRes: Int, rating: Double) {
+        text = if (rating > 0.0) {
+            context.getString(labelRes, rating.formatRating())
+        } else {
+            context.getString(labelRes, context.getString(R.string.data_is_null_message))
+        }
+    }
+
+    private fun TextView.handleYear(year: Int) {
+        text = if (year > 0) {
+            context.getString(R.string.year_label, year.toString())
+        } else {
+            context.getString(R.string.year_label, context.getString(R.string.data_is_null_message))
+        }
+    }
+
+    private fun Double.formatRating() = "%.1f".format(this)
 }
 
 class FavouriteMovieViewHolder(val binding: MovieItemFavouriteListBinding) :
