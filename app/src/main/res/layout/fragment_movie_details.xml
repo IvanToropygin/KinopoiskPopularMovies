@@ -85,7 +85,31 @@
                 android:textStyle="italic"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textViewYear"
+                app:layout_constraintVertical_bias="0.0"
                 tools:text="@tools:sample/lorem/random" />
+
+            <TextView
+                android:id="@+id/textViewTrailers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/trailers_title"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewDescription" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewTrailers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:nestedScrollingEnabled="false"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintTop_toBottomOf="@id/textViewTrailers"
+                tools:itemCount="3"
+                tools:listitem="@layout/trailer_item" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>

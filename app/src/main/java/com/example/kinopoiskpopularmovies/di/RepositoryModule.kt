@@ -3,6 +3,7 @@ package com.example.kinopoiskpopularmovies.di
 import com.example.kinopoiskpopularmovies.data.repository.MoviesRepositoryImpl
 import com.example.kinopoiskpopularmovies.data.local.FavouriteMoviesDao
 import com.example.kinopoiskpopularmovies.data.mappers.MovieMapper
+import com.example.kinopoiskpopularmovies.data.mappers.TrailerMapper
 import com.example.kinopoiskpopularmovies.data.remote.MovieApi
 import com.example.kinopoiskpopularmovies.domain.MoviesRepository
 import dagger.Module
@@ -21,11 +22,16 @@ object RepositoryModule {
 
     @Provides
     @Singleton
+    fun provideTrailerMapper(): TrailerMapper = TrailerMapper()
+
+    @Provides
+    @Singleton
     fun provideMoviesRepository(
         api: MovieApi,
         dao: FavouriteMoviesDao,
-        mapper: MovieMapper,
+        movieMapper: MovieMapper,
+        trailerMapper: TrailerMapper,
     ): MoviesRepository {
-        return MoviesRepositoryImpl(api, dao, mapper)
+        return MoviesRepositoryImpl(api, dao, movieMapper, trailerMapper)
     }
 }
