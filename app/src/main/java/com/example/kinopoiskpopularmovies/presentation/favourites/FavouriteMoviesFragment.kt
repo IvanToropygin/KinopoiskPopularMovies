@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.RecyclerView
 import androidx.transition.TransitionManager
 import com.example.kinopoiskpopularmovies.databinding.FragmentFavouriteMoviesBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -35,6 +37,7 @@ class FavouriteMoviesFragment : Fragment() {
 
         setupAdapter()
         observeViewModel()
+        setupSwipeToDelete()
     }
 
     override fun onDestroyView() {
@@ -67,5 +70,26 @@ class FavouriteMoviesFragment : Fragment() {
                 binding.recyclerViewFavouriteMovies.visibility = View.VISIBLE
             }
         }
+    }
+
+    private fun setupSwipeToDelete() {
+        val itemTouchHelper = ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(
+            0,
+            ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
+        ) {
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ) = false
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val position = viewHolder.bindingAdapterPosition
+                val movie = favouriteMoviesAdapter.currentList[position]
+                viewModel.removeMovieFromFavourites(movie.kinopoiskId)
+            }
+        })
+
+        itemTouchHelper.attachToRecyclerView(binding.recyclerViewFavouriteMovies)
     }
 }

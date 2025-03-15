@@ -71,6 +71,11 @@ class FavouriteMoviesAdapter(
         }
     }
 
+    fun removeItem(position: Int) {
+        val newList = currentList.toMutableList().apply { removeAt(position) }
+        submitList(newList)
+    }
+
     private fun Double.formatRating() = "%.1f".format(this)
 }
 
