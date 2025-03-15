@@ -4,10 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
+import com.example.kinopoiskpopularmovies.R
 import com.example.kinopoiskpopularmovies.databinding.FragmentMovieDetailsBinding
 import com.example.kinopoiskpopularmovies.domain.MovieItem
 import com.google.android.material.snackbar.Snackbar
@@ -68,6 +70,27 @@ class MovieDetailsFragment : Fragment() {
                 .load(movie.posterUrl)
                 .into(imageViewPoster)
 
+
+            val rating = movie.rating
+
+            if (rating == 0.0) {
+                textViewRating.visibility = View.GONE
+            } else {
+                val backgroundDrawableId =
+                when {
+                    (rating > 7) -> R.drawable. circle_green
+                    (rating > 4) -> R.drawable. circle_orange
+                    else -> R.drawable. circle_red
+                }
+
+                val background = ContextCompat.getDrawable(requireContext(), backgroundDrawableId)
+                textViewRating.background = background;
+                textViewRating.text = rating.toString()
+            }
+
+
+            textViewRating.text
+
             textViewTitle.text = movie.name
 
             if (movie.year != 0) {
@@ -78,7 +101,7 @@ class MovieDetailsFragment : Fragment() {
 
             textViewDescription.text = movie.description
 
-            imageViewStar.setOnClickListener {
+            imageViewFavourite.setOnClickListener {
                 viewModel.toggleFavorite(movie)
             }
         }
@@ -86,10 +109,10 @@ class MovieDetailsFragment : Fragment() {
 
     private fun updateStarIcon(isFavourite: Boolean) {
         val icon = if (isFavourite) {
-            android.R.drawable.star_big_on
+            R.drawable.ic_heart_fill
         } else {
-            android.R.drawable.star_big_off
+            R.drawable.ic_heart
         }
-        binding.imageViewStar.setImageResource(icon)
+        binding.imageViewFavourite.setImageResource(icon)
     }
 }

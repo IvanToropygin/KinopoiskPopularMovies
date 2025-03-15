@@ -26,26 +26,28 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:src="@tools:sample/avatars" />
 
-            <ImageView
-                android:id="@+id/imageViewStar"
+            <TextView
+                android:id="@+id/textViewRating"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
-                android:background="?attr/selectableItemBackgroundBorderless"
                 android:contentDescription="@string/favourite_button"
-                app:layout_constraintBottom_toBottomOf="@id/imageViewPoster"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageViewPoster"
-                tools:src="@android:drawable/star_big_off" />
+                android:textColor="@color/kinopoisk_background"
+                app:layout_constraintBottom_toBottomOf="@id/textViewTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/textViewTitle"
+                tools:background="@drawable/circle_green"
+                tools:text="5.5" />
 
             <TextView
                 android:id="@+id/textViewTitle"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="8dp"
                 android:layout_marginTop="8dp"
                 android:textSize="20sp"
                 android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/textViewRating"
                 app:layout_constraintTop_toBottomOf="@id/imageViewPoster"
                 tools:text="Movie Title" />
 
@@ -54,11 +56,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="8dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="8dp"
                 android:textColor="@android:color/holo_orange_dark"
                 android:textSize="16sp"
                 app:layout_constraintTop_toBottomOf="@id/textViewTitle"
                 tools:text="2023" />
+
+            <ImageView
+                android:id="@+id/imageViewFavourite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/favourite_button"
+                app:layout_constraintBottom_toBottomOf="@id/textViewYear"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/textViewYear"
+                tools:src="@drawable/ic_heart" />
 
             <TextView
                 android:id="@+id/textViewDescription"
