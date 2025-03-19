@@ -34,21 +34,26 @@ class PopularMoviesViewModelTest {
         val testMovies = listOf(
             MovieItem(
                 kinopoiskId = 1,
-                name = "Name1",
+                name = "Film 1",
                 description = "Description1",
-                rating = 5.5,
                 year = 2025,
                 posterUrl = "url1",
-                isFavorite = false
+                isFavorite = false,
+                nameOriginal = "anora",
+                kinopoiskRating = 5.5,
+                imdbRating = 6.0
             ),
             MovieItem(
                 kinopoiskId = 2,
-                name = "Name2",
+                name = "Film 2",
                 description = "Description2",
-                rating = 7.0,
                 year = 2020,
                 posterUrl = "url2",
-                isFavorite = true)
+                isFavorite = true,
+                nameOriginal = "original",
+                kinopoiskRating = 4.4,
+                imdbRating = 5.0
+            )
         )
 
         `when`(mockRepository.getPopularMovies(1)).thenReturn(testMovies)
