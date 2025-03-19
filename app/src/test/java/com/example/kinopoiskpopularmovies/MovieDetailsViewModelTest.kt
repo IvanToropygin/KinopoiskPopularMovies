@@ -47,13 +47,15 @@ class MovieDetailsViewModelTest {
     @Test
     fun `checkFavoriteStatus should set true when movie is favorite`() = runTest {
         val testMovie = MovieItem(
-            kinopoiskId = 2,
-            name = "Film 2",
-            description = "Description2",
-            rating = 7.0,
-            year = 2020,
-            posterUrl = "url2",
-            isFavorite = true
+            kinopoiskId = 1,
+            name = "Film 1",
+            description = "Description1",
+            year = 2025,
+            posterUrl = "url1",
+            isFavorite = false,
+            nameOriginal = "anora",
+            kinopoiskRating = 5.5,
+            imdbRating = 6.0
         )
         whenever(mockRepository.getFavouriteMovieById(1)).thenReturn(testMovie)
 
